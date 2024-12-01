@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .author-list {
+            list-style: none;
+            padding: 0;
+        }
+        .author-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .author-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 5px;
+        }
+        .author-bio {
+            font-size: 14px;
+            color: #555;
+            margin: 0 0 10px;
+        }
+        .text-muted {
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Authors List</h1>
+        <ul class="author-list">
+            {% for author in authors %}
+            <li class="author-item">
+                <p class="author-name">{{ author.first_name}}</p>
+                <p class="author-name">{{ author.last_name}}</p>
+                <p class="author-bio">{{ author.biography }}</p>
+                <p class="text-muted">Born: {{ author.date_of_birth|date:"F j, Y" }}</p>
+            </li>
+            <a href="{% url 'home' %}">Ortga</a>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

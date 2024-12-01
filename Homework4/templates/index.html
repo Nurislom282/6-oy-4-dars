@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .col {
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+        .card-text {
+            font-size: 14px;
+            color: #555;
+            margin: 0 0 5px;
+        }
+        .text-muted {
+            color: #999;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Library Catalog</h1>
+        <div class="row">
+            {% for book in books %}
+            {% for author in authors %}
+            <div class="col">
+                <div class="card">
+                    <img src="{{ book.photo.url }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">Author: {{ author.first_name }}</p>
+                        <a href= "{% url 'authors'%}">{{ author.first_name }}</a>
+                        <p class="card-text">
+                            <small class="text-muted">Published: {{ book.publication_date }}</small>
+                        </p>
+                        <a href="{% url 'comment'%}">Comentlar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
